@@ -45,6 +45,10 @@ use Illuminate\Support\Facades\Route;
 
 // Route::resource('posts', 'PostsController');
 
+Route::get('/', function(){
+  return 'this is going to be the homepage. Not xampp dashboard page.';
+});
+
 Route::get('/contact', 'PostsController@contact');
 
 Route::get('post/{id}/{name}/{password}', 'PostsController@show_post');
