@@ -45,10 +45,50 @@ use Illuminate\Support\Facades\Route;
 
 // Route::resource('posts', 'PostsController');
 
-Route::get('/', function(){
-  return 'this is going to be the homepage. Not xampp dashboard page.';
-});
+// Route::get('/', function(){
+//   return 'this is going to be the homepage. Not xampp dashboard page.';
+// });
 
-Route::get('/contact', 'PostsController@contact');
+// Route::get('/contact', 'PostsController@contact');
 
-Route::get('post/{id}/{name}/{password}', 'PostsController@show_post');
+// Route::get('post/{id}/{name}/{password}', 'PostsController@show_post');
+
+
+// use Illuminate\Support\Facades\DB;
+
+// Route::get('/insert', function(){
+
+//   DB::insert('insert into posts(title, content) value(?, ?)', ['PHP with laravel', 'laravel is interesting framework']);
+
+// });
+
+
+
+//database raw sql queries
+
+// Route::get('/read', function(){
+//   $results = DB::select('select * from posts where id = ?', [1]);
+
+//   return var_dump($results);
+
+//   // foreach($results as $post){
+//   //   return $post->title;
+//   // }
+// });
+
+// Route::get('/update', function(){
+
+//   $updated = DB::update('update posts set title = "update title" where id = ?', [1]);
+
+//   return $updated;
+
+// });
+
+// Route::get('/delete', function(){
+//   $deleted = DB::delete('delete from posts where id = ?', [1]);
+//   return $deleted;
+// });;
+
+
+
+//ELOQUENT
