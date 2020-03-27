@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,11 +57,11 @@ use Illuminate\Support\Facades\Route;
 
 // use Illuminate\Support\Facades\DB;
 
-// Route::get('/insert', function(){
+Route::get('/insert', function(){
 
-//   DB::insert('insert into posts(title, content) value(?, ?)', ['PHP with laravel', 'laravel is interesting framework']);
+  DB::insert('insert into posts(title, content) value(?, ?)', ['Laravel is cool', 'laravel is interesting framework, period']);
 
-// });
+});
 
 
 
@@ -92,3 +93,100 @@ use Illuminate\Support\Facades\Route;
 
 
 //ELOQUENT
+
+// Route::get('/read', function(){
+//   $posts = Post::all();
+
+//   foreach($posts as $post){
+//     return $post->title;
+//   }
+
+// });
+
+// Route::get('/find', function(){
+//   $post = Post::find(2);
+//   return $post->title;
+//   // foreach($posts as $post){
+//   //   return $post->title;
+//   // }
+
+// });
+
+
+// Route::get('/findwhere', function(){
+//   $posts = Post::where('id', 3)->orderBy('id', 'desc')->take(1)->get();
+//   return $posts;
+// });
+
+
+// Route::get('/findmore', function(){
+//   // $posts = Post::findOrFail(1);
+
+//   // return $posts;
+
+//   $posts = Post::where('users_count', '<', 50)->firstOrFail();
+
+
+// });
+
+// Route::get('/basicinsert', function(){
+//   $post = new Post;
+
+//   $post->title = 'New Eloquent tile insert';
+//   $post->content = 'Wow eloqunet is really cool, look at this content';
+//   $post->save();
+// });
+
+// Route::get('/basicinsert2', function(){
+//   $post = Post::find(2);
+
+//   $post->title = 'New Eloquent tile insert2';
+//   $post->content = 'Wow eloqunet is really cool, look at this content2';
+//   $post->save();
+// });
+
+
+// Route::get('/create', function(){
+//   Post::create(['title'=>'the create method 1', 'content'=>'i am learning alot php 1']);
+// });
+
+
+// Route::get('/update', function(){
+//   Post::where('id', 2)->where('is_admin', 0)->update(['title'=>'NEW PHP TITLE', 'content'=>'laravel tsting ']);
+// });
+
+Route::get('/delete', function(){
+  $post = Post::find(16);
+  $post->delete();
+});
+
+// Route::get('/delete2', function(){
+//   Post::destroy([4,5]);
+
+// });
+
+
+// Route::get('/softdelete', function(){
+//   Post::find(2)->delete();
+// });
+
+// Route::get('/readsoftdelete', function(){
+//   // $post = Post::find(1);
+//   // return $post;
+//   // $post = Post::withTrashed()->where('id', 1)->get();
+//   // return $post;
+//   // $post = Post::onlyTrashed()->where('is_admin', 0)->get();
+//   // return $post;
+//   $post = Post::withTrashed()->where('is_admin', 0)->get();
+//   return $post;  
+// });
+
+// Route::get('/restore', function(){
+//   Post::withTrashed()->where('is_admin', 0)->restore();
+// });
+
+Route::get('/forcedelete', function(){
+  Post::onlyTrashed()->where('is_admin',0)->forceDelete();
+});
+
+
