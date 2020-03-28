@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Post;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,11 +58,11 @@ use App\Post;
 
 // use Illuminate\Support\Facades\DB;
 
-Route::get('/insert', function(){
+// Route::get('/insert', function(){
 
-  DB::insert('insert into posts(title, content) value(?, ?)', ['Laravel is cool', 'laravel is interesting framework, period']);
+//   DB::insert('insert into posts(title, content) value(?, ?)', ['Laravel is cool', 'laravel is interesting framework, period']);
 
-});
+// });
 
 
 
@@ -155,10 +156,10 @@ Route::get('/insert', function(){
 //   Post::where('id', 2)->where('is_admin', 0)->update(['title'=>'NEW PHP TITLE', 'content'=>'laravel tsting ']);
 // });
 
-Route::get('/delete', function(){
-  $post = Post::find(16);
-  $post->delete();
-});
+// Route::get('/delete', function(){
+//   $post = Post::find(16);
+//   $post->delete();
+// });
 
 // Route::get('/delete2', function(){
 //   Post::destroy([4,5]);
@@ -185,8 +186,44 @@ Route::get('/delete', function(){
 //   Post::withTrashed()->where('is_admin', 0)->restore();
 // });
 
-Route::get('/forcedelete', function(){
-  Post::onlyTrashed()->where('is_admin',0)->forceDelete();
-});
+// Route::get('/forcedelete', function(){
+//   Post::onlyTrashed()->where('is_admin',0)->forceDelete();
+// });
 
+
+//REALATIONSHIPS
+
+//ONE TO ONE RELATIONSHIP
+
+// Route::get('/user/{id}/post', function($id){
+
+//   return User::find($id)->post->content;
+
+// });
+
+// Route::get('/post/{id}/user', function($id){
+//   return Post::find($id)->user->name;
+// });
+
+
+//ONE TO MANY RELATIONSHIP
+
+// Route::get('/posts/', function(){
+//   $user = User::find(1);
+
+//   foreach($user->posts as $post){
+//     echo $post->title . "<br>";
+//   }
+// });
+
+
+//MANY TO MANY RELATIONSHIPS
+
+// Route::get('/user/{id}/role', function($id){
+//   $user = User::find($id)->roles()->orderBy('id', 'desc')->get();
+//   return $user;
+// });
+
+
+// ACCESSING THE INTEMIDIATE TABLE / PIVOT
 
